@@ -12,18 +12,18 @@ public class ShivApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ShivApplication.class, args);
 	}
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:5173",
-                                "up-iapplication.vercel.app") // React dev server
-                        .allowedMethods("GET", "POST", "PUT", "DELETE")
-                        .allowedHeaders("*");
-            }
-        };
-    }
+//    @Bean
+//    public WebMvcConfigurer corsConfigurer() {
+//        return new WebMvcConfigurer() {
+//            @Override
+//            public void addCorsMappings(CorsRegistry registry) {
+//                registry.addMapping("/**")
+//                        .allowedOrigins("http://localhost:5173",
+//                                "up-iapplication.vercel.app") // React dev server
+//                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+//                        .allowedHeaders("*");
+//            }
+//        };
+//    }
 
 }
