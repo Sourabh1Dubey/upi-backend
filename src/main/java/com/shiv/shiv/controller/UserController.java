@@ -8,6 +8,8 @@ import com.shiv.shiv.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -19,6 +21,8 @@ public class UserController {
     @PostMapping("/create")
     public boolean createUser(@RequestBody UserEntity user){
         if(systemConfigService.getConfig().getBlockedCountries().stream().anyMatch(user.getMobNo() :: startsWith)) return false;
+        if(user.getMobNo().length()>13) return false;
+        if(user.getTpin().length()>4) return false;
         userService.saveUser(user);
         return true;
     }
@@ -26,6 +30,11 @@ public class UserController {
     @GetMapping("/see/{mobile}")
     public UserEntity getUser(@PathVariable String mobile){
        return userService.getUser(mobile);
+    }
+
+    @GetMapping("/all")
+    public List<UserEntity> getAll(){
+        return userService.getAll();
     }
 
 }

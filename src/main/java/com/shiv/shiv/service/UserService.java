@@ -5,6 +5,8 @@ import com.shiv.shiv.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class UserService {
     @Autowired
@@ -15,5 +17,9 @@ public class UserService {
 
     public UserEntity getUser(String mobile){
         return userRepository.findUserByMobNo(mobile);
+    }
+
+    public List<UserEntity> getAll() {
+        return userRepository.findAll();
     }
 }
